@@ -8,24 +8,30 @@ export default function HomePage() {
   const router = useRouter()
   const [isRedirecting, setIsRedirecting] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [isMounted, setIsMounted] = useState(false)
 
   useEffect(() => {
+    // Ensure component is mounted before accessing localStorage
+    setIsMounted(true)
+  }, [])
+
+  useEffect(() => {
+    if (!isMounted) return
+
     const redirectUser = () => {
       try {
-        // Check if user is logged in
-        const userData = localStorage.getItem("user")
-        if (userData) {
-          const parsedUser = JSON.parse(userData)
-          if (parsedUser.isLoggedIn) {
-            console.log("User is logged in, redirecting to dashboard")
-            router.push("/dashboard")
-            return
-          }
-        }
+        // Check if we're in a browser environment
+        if (typeof window === "undefined") return
 
-        // Redirect to login if not logged in
-        console.log("User not logged in, redirecting to login")
-        router.push("/login")
+        // Check if user is logged in
+        const token = localStorage.getItem("token")
+        if (token) {
+          console.log("User logged in, redirecting to dashboard")
+          router.push("/dashboard")
+        } else {
+          console.log("User not logged in, redirecting to login")
+          router.push("/login")
+        }
       } catch (err) {
         console.error("Error during redirect:", err)
         setError("Failed to load application")
@@ -37,7 +43,19 @@ export default function HomePage() {
     const timer = setTimeout(redirectUser, 100)
 
     return () => clearTimeout(timer)
-  }, [router])
+  }, [router, isMounted])
+
+  // Don't render anything until component is mounted (prevents hydration mismatch)
+  if (!isMounted) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center">
+          <Loader2 className="h-8 w-8 animate-spin mx-auto mb-4" />
+          <p className="text-muted-foreground">Loading...</p>
+        </div>
+      </div>
+    )
+  }
 
   if (error) {
     return (

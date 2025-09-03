@@ -9,6 +9,10 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  // Ensure proper handling of client-side routing
+  trailingSlash: false,
+  // Enable static optimization where possible
+  output: 'standalone',
 }
 
 export default nextConfig
