@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { AlertCircle, Loader2 } from "lucide-react"
 import Link from "next/link"
-const BACKEND_URL = process.env.BACKEND_URL || 'https://backend-vert-xi-76.vercel.app/'
+const BACKEND_URL = process.env.BACKEND_URL || 'https://backend-vert-xi-76.vercel.app'
 
 export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false)

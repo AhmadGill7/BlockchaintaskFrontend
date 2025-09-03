@@ -63,7 +63,7 @@ export interface DatabaseReferralData {
 
 export class EnhancedReferralService {
   private static instance: EnhancedReferralService
-  private apiUrl = 'https://backend-vert-xi-76.vercel.app//api'
+  private apiUrl = 'https://backend-vert-xi-76.vercel.app/api'
 
   static getInstance(): EnhancedReferralService {
     if (!EnhancedReferralService.instance) {

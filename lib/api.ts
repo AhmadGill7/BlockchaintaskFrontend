@@ -1,5 +1,5 @@
 // lib/api.ts
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://backend-vert-xi-76.vercel.app//api'
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://backend-vert-xi-76.vercel.app/api'
 
 interface ApiResponse<T = any> {
   success: boolean
