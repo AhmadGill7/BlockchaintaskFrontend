@@ -1,0 +1,1387 @@
+[
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_name",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_price",
+				"type": "uint256"
+			}
+		],
+		"name": "addProduct",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			}
+		],
+		"name": "OwnableInvalidOwner",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			}
+		],
+		"name": "OwnableUnauthorizedAccount",
+		"type": "error"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "referrer",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "CommissionPaid",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "round",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "address[]",
+				"name": "winners",
+				"type": "address[]"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256[]",
+				"name": "prizes",
+				"type": "uint256[]"
+			}
+		],
+		"name": "DrawExecuted",
+		"type": "event"
+	},
+	{
+		"inputs": [],
+		"name": "emergencyWithdraw",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "executeLuckyDraw",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "previousOwner",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "OwnershipTransferred",
+		"type": "event"
+	},
+	{
+		"inputs": [],
+		"name": "pauseContract",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			}
+		],
+		"name": "Paused",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "productId",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "price",
+				"type": "uint256"
+			}
+		],
+		"name": "ProductAdded",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "purchaseId",
+				"type": "uint256"
+			},
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "productId",
+				"type": "uint256"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "buyer",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "referrer",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "commission",
+				"type": "uint256"
+			}
+		],
+		"name": "ProductPurchased",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "productId",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "price",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "bool",
+				"name": "active",
+				"type": "bool"
+			}
+		],
+		"name": "ProductUpdated",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_productId",
+				"type": "uint256"
+			}
+		],
+		"name": "purchaseProduct",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_referrer",
+				"type": "address"
+			}
+		],
+		"name": "registerUser",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "renounceOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "transferOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "unpauseContract",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			}
+		],
+		"name": "Unpaused",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_productId",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "_name",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_price",
+				"type": "uint256"
+			},
+			{
+				"internalType": "bool",
+				"name": "_active",
+				"type": "bool"
+			}
+		],
+		"name": "updateProduct",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "user",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "referrer",
+				"type": "address"
+			}
+		],
+		"name": "UserRegistered",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_amount",
+				"type": "uint256"
+			}
+		],
+		"name": "withdrawFunds",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"stateMutability": "payable",
+		"type": "receive"
+	},
+	{
+		"inputs": [],
+		"name": "currentDrawRound",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "drawHistory",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "winner",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "prize",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "position",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "round",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "timestamp",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "eligibleUsers",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "FIRST_PRIZE",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getActiveProducts",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "price",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "active",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "totalSold",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct ECommerceContract.Product[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getAllProducts",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "price",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "active",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "totalSold",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct ECommerceContract.Product[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getContractBalance",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getDrawHistory",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "address",
+						"name": "winner",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "prize",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "position",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "round",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct ECommerceContract.DrawWinner[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_round",
+				"type": "uint256"
+			}
+		],
+		"name": "getDrawWinners",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "address",
+						"name": "winner",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "prize",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "position",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "round",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct ECommerceContract.DrawWinner[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getEligibleUsersCount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getLatestDraw",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "address",
+						"name": "winner",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "prize",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "position",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "round",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct ECommerceContract.DrawWinner[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_productId",
+				"type": "uint256"
+			}
+		],
+		"name": "getProduct",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "price",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "active",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "totalSold",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct ECommerceContract.Product",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_purchaseId",
+				"type": "uint256"
+			}
+		],
+		"name": "getPurchase",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "productId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "productName",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "buyer",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "referrer",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "commission",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct ECommerceContract.Purchase",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_limit",
+				"type": "uint256"
+			}
+		],
+		"name": "getRecentPurchases",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "productId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "productName",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "buyer",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "referrer",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "commission",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct ECommerceContract.Purchase[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_user",
+				"type": "address"
+			}
+		],
+		"name": "getReferrer",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getStats",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "totalUsers",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "totalPurchases",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "totalProducts",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "eligibleForDraw",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "contractBalance",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "totalDraws",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_user",
+				"type": "address"
+			}
+		],
+		"name": "getUserInfo",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "address",
+						"name": "wallet",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "totalSpent",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "totalCommissions",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "purchaseCount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "eligibleForDraw",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "lastPurchaseTime",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct ECommerceContract.User",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_user",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_limit",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_offset",
+				"type": "uint256"
+			}
+		],
+		"name": "getUserPurchaseHistory",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "productId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "productName",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "buyer",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "referrer",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "commission",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct ECommerceContract.Purchase[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_user",
+				"type": "address"
+			}
+		],
+		"name": "getUserPurchases",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "productId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "productName",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "buyer",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "referrer",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "commission",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct ECommerceContract.Purchase[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_user",
+				"type": "address"
+			}
+		],
+		"name": "isEligibleForDraw",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "owner",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "paused",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "productCount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "products",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "price",
+				"type": "uint256"
+			},
+			{
+				"internalType": "bool",
+				"name": "active",
+				"type": "bool"
+			},
+			{
+				"internalType": "uint256",
+				"name": "totalSold",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "purchaseCount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "purchases",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "productId",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "productName",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "buyer",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "referrer",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "commission",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "timestamp",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "REFERRAL_COMMISSION",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "referrals",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "SECOND_PRIZE",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "THIRD_PRIZE",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "userPurchaseIds",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "users",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "wallet",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "totalSpent",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "totalCommissions",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "purchaseCount",
+				"type": "uint256"
+			},
+			{
+				"internalType": "bool",
+				"name": "eligibleForDraw",
+				"type": "bool"
+			},
+			{
+				"internalType": "uint256",
+				"name": "lastPurchaseTime",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
